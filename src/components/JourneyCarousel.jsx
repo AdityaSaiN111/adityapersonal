@@ -67,7 +67,7 @@ const JourneyCarousel = () => {
         </motion.div>
         
         {/* Expanding Cards Container */}
-        <div className="flex w-full h-[55vh] md:h-[70vh] gap-3 md:gap-5">
+        <div className="flex flex-col md:flex-row w-full h-[120vh] md:h-[70vh] gap-3 md:gap-5">
           {achievementImages.map((img, index) => {
             const isActive = active === index;
             
@@ -77,7 +77,7 @@ const JourneyCarousel = () => {
                 onClick={() => setActive(index)}
                 className="relative rounded-3xl overflow-hidden cursor-pointer group"
                 style={{ 
-                  flex: isActive ? 10 : 1,
+                  flex: isActive ? (window.innerWidth < 768 ? 4 : 10) : 1,
                   transition: "flex 0.8s cubic-bezier(0.16, 1, 0.3, 1)"
                 }}
               >
@@ -101,7 +101,7 @@ const JourneyCarousel = () => {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 10, transition: { duration: 0.2 } }}
                       transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className="absolute bottom-0 left-0 p-6 md:p-8 w-[85vw] md:w-[600px] pointer-events-none"
+                      className="absolute bottom-0 left-0 p-6 md:p-8 w-full md:w-[600px] pointer-events-none"
                     >
                       <motion.div 
                         initial={{ opacity: 0, scale: 0.5 }}
@@ -116,18 +116,21 @@ const JourneyCarousel = () => {
                         {img.title}
                       </h3>
                       
-                      <p className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-lg hidden md:block">
+                      <p className="text-white/80 text-sm md:text-base font-light leading-relaxed max-w-lg">
                         {img.desc}
                       </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                {/* Vertical Text for Inactive State */}
-                <div className={`absolute inset-0 flex items-end justify-center pb-10 transition-opacity duration-500 delay-100 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                {/* Vertical/Horizontal Text for Inactive State */}
+                <div className={`absolute inset-0 flex items-center md:items-end justify-center pb-0 md:pb-10 transition-opacity duration-500 delay-100 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                    <span 
-                      className="text-white/60 group-hover:text-white font-bold tracking-[0.3em] uppercase text-xs md:text-sm whitespace-nowrap transition-colors duration-300" 
-                      style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+                      className="text-white/60 group-hover:text-white font-bold tracking-[0.3em] uppercase text-[10px] md:text-sm whitespace-nowrap transition-colors duration-300" 
+                      style={{ 
+                        writingMode: window.innerWidth < 768 ? 'horizontal-tb' : 'vertical-rl', 
+                        transform: window.innerWidth < 768 ? 'none' : 'rotate(180deg)' 
+                      }}
                    >
                       {img.title}
                    </span>

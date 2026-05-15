@@ -31,6 +31,8 @@ const RESUME_MS  = 3000;
 const ORBIT_Y_OFFSET = 120; // px – push orbit center downward from screen center
 
 export default function PhotographyPage() {
+  const [radius, setRadius] = useState(window.innerWidth < 768 ? 160 : 400);
+  const [yOffset, setYOffset] = useState(window.innerWidth < 768 ? 60 : 120);
   const angleRef       = useRef(0);
   const targetRef      = useRef(0);
   const rafRef         = useRef(null);
@@ -40,6 +42,16 @@ export default function PhotographyPage() {
   const isDragging     = useRef(false);
   const [, forceRender]   = useState(0);
   const [lightbox, setLightbox] = useState(null); // { src, title }
+
+  /* ─── Resize listener ─────────────────────────────────────── */
+  useEffect(() => {
+    const handleResize = () => {
+      setRadius(window.innerWidth < 768 ? 160 : 400);
+      setYOffset(window.innerWidth < 768 ? 60 : 120);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   /* ─── Pause auto-play ─────────────────────────────────────── */
   const pauseAuto = useCallback(() => {
@@ -109,9 +121,9 @@ export default function PhotographyPage() {
   const cards = IMAGES.map((img, i) => {
     const baseAngle = (i / N) * 360;
     const theta     = ((baseAngle + angleRef.current) % 360) * (Math.PI / 180);
-    const x         = Math.sin(theta) * RADIUS;
+    const x         = Math.sin(theta) * radius;
     const zRaw      = Math.cos(theta);
-    const y         = -zRaw * RADIUS * Math.sin(TILT * Math.PI / 180);
+    const y         = -zRaw * radius * Math.sin(TILT * Math.PI / 180);
     const scale     = 0.65 + 0.45 * ((zRaw + 1) / 2);
     const opacity   = 0.35 + 0.65 * ((zRaw + 1) / 2);
     const blur      = Math.max(0, (1 - (zRaw + 1) / 2) * 3);
@@ -167,8 +179,8 @@ export default function PhotographyPage() {
                 left:       '50%',
                 top:        '50%',
                 zIndex:     card.zIndex,
-                // ORBIT_Y_OFFSET shifts the entire orbit down from screen center
-                transform:  `translate(calc(-50% + ${card.x}px), calc(-50% + ${card.y + ORBIT_Y_OFFSET}px)) scale(${card.scale})`,
+                // yOffset shifts the entire orbit down from screen center
+                transform:  `translate(calc(-50% + ${card.x}px), calc(-50% + ${card.y + yOffset}px)) scale(${card.scale})`,
                 opacity:    card.opacity,
                 filter:     `blur(${card.blur}px)`,
                 transition: 'filter 0.1s linear',

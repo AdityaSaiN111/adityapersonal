@@ -225,12 +225,12 @@ export default function SuggestionsPage() {
       {/* ─── Nav ──────────────────────────────────────────────── */}
       <nav className="fixed top-0 inset-x-0 z-[100] flex items-center justify-between px-6 md:px-14 py-6"
         style={{ background: 'linear-gradient(to bottom, rgba(5,11,81,0.95), transparent)', backdropFilter: 'blur(4px)' }}>
-        <Link to="/" className="flex items-center gap-2 text-white/50 hover:text-white transition-colors duration-300 text-xs uppercase tracking-[0.3em] font-medium">
+        <Link to="/" className="flex items-center gap-2 text-white/50 hover:text-white transition-colors duration-300 text-[10px] md:text-xs uppercase tracking-[0.3em] font-medium">
           <ArrowLeft size={13} />
           Portfolio
         </Link>
-        <span className="font-playfair text-base tracking-widest bg-gradient-to-r from-[#c5a059] to-amber-300 bg-clip-text text-transparent">ASN</span>
-        <Link to="/photography" className="text-white/50 hover:text-white transition-colors duration-300 text-xs uppercase tracking-[0.3em] font-medium hidden md:block">
+        <span className="font-playfair text-sm md:text-base tracking-widest bg-gradient-to-r from-[#c5a059] to-amber-300 bg-clip-text text-transparent">ASN</span>
+        <Link to="/photography" className="text-white/50 hover:text-white transition-colors duration-300 text-[10px] md:text-xs uppercase tracking-[0.3em] font-medium hidden sm:block">
           Photography
         </Link>
       </nav>
@@ -244,20 +244,20 @@ export default function SuggestionsPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: 'easeOut' }}
-            className="flex items-center justify-center gap-4 mb-10"
+            className="flex items-center justify-center gap-4 mb-6 md:mb-10"
           >
-            <div className="w-8 h-[1px] bg-[#c5a059]/50" />
-            <p className="text-[0.6rem] uppercase tracking-[0.55em] text-[#c5a059]/80 font-medium">Market Intelligence · 2026</p>
-            <div className="w-8 h-[1px] bg-[#c5a059]/50" />
+            <div className="w-6 md:w-8 h-[1px] bg-[#c5a059]/50" />
+            <p className="text-[0.5rem] md:text-[0.6rem] uppercase tracking-[0.4em] md:tracking-[0.55em] text-[#c5a059]/80 font-medium">Market Intelligence · 2026</p>
+            <div className="w-6 md:w-8 h-[1px] bg-[#c5a059]/50" />
           </motion.div>
 
           {/* Hero heading with mask reveal */}
-          <div className="overflow-hidden mb-4">
+          <div className="overflow-hidden mb-2 md:mb-4">
             <motion.h1
               initial={{ y: '110%' }}
               animate={{ y: 0 }}
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-playfair text-[14vw] md:text-[9vw] lg:text-[8rem] font-light tracking-tight leading-[0.9] bg-gradient-to-br from-white via-white to-white/50 bg-clip-text text-transparent"
+              className="font-playfair text-[16vw] md:text-[9vw] lg:text-[8rem] font-light tracking-tight leading-[0.9] bg-gradient-to-br from-white via-white to-white/50 bg-clip-text text-transparent"
             >
               Strategic
             </motion.h1>
@@ -267,7 +267,7 @@ export default function SuggestionsPage() {
               initial={{ y: '110%' }}
               animate={{ y: 0 }}
               transition={{ duration: 1.1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-playfair text-[14vw] md:text-[9vw] lg:text-[8rem] font-light tracking-tight leading-[0.9] italic bg-gradient-to-br from-[#c5a059] to-amber-200 bg-clip-text text-transparent"
+              className="font-playfair text-[16vw] md:text-[9vw] lg:text-[8rem] font-light tracking-tight leading-[0.9] italic bg-gradient-to-br from-[#c5a059] to-amber-200 bg-clip-text text-transparent"
             >
               Markets.
             </motion.h1>
@@ -277,7 +277,7 @@ export default function SuggestionsPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
-            className="mt-10 text-white/40 text-sm md:text-base max-w-md mx-auto leading-relaxed font-light tracking-wide"
+            className="mt-6 md:mt-10 text-white/40 text-xs md:text-base max-w-[280px] md:max-w-md mx-auto leading-relaxed font-light tracking-wide"
           >
             Curated picks informed by fundamentals, trends, and disciplined conviction.
           </motion.p>

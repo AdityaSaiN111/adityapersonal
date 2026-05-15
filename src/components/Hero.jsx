@@ -58,7 +58,7 @@ const Hero = () => {
 
       <motion.div 
         style={{ opacity }}
-        className="relative z-10 w-full max-w-7xl px-6 flex flex-col md:flex-row items-end justify-center h-full"
+        className="relative z-10 w-full max-w-7xl px-6 flex flex-col md:flex-row items-center md:items-end justify-center h-full pt-20 md:pt-0"
       >
         {/* Text Section */}
         <motion.div 
@@ -66,17 +66,17 @@ const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="z-20 mb-[10vh] md:mb-[30vh] text-left"
+          className="z-20 mb-8 md:mb-[30vh] text-center md:text-left"
         >
-          <h1 className="text-5xl md:text-8xl font-extrabold leading-[0.9] uppercase tracking-tighter overflow-hidden">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-extrabold leading-[0.9] uppercase tracking-tighter overflow-hidden">
             <motion.span variants={textVariants} className="text-[#820e0e] block">Nandyala</motion.span>
             <motion.span variants={textVariants} className="text-white block">Aditya</motion.span>
             <motion.span variants={textVariants} className="text-white block">Sai</motion.span>
           </h1>
           
-          <motion.div variants={textVariants} className="mt-10 flex items-center gap-5">
-            <div className="h-[2px] w-16 bg-[#820e0e]"></div>
-            <p className="text-white/80 tracking-[0.25em] uppercase text-xs md:text-sm font-medium">
+          <motion.div variants={textVariants} className="mt-6 md:mt-10 flex flex-col md:flex-row items-center gap-4 md:gap-5">
+            <div className="h-[2px] w-12 md:w-16 bg-[#820e0e]"></div>
+            <p className="text-white/80 tracking-[0.25em] uppercase text-[10px] md:text-sm font-medium">
               Creative Developer & Innovator
             </p>
           </motion.div>
@@ -88,18 +88,18 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative md:-mr-[50px] z-10"
+          className="relative md:-mr-[50px] z-10 mt-auto"
         >
           <img 
             src={heroImage} 
             alt="Aditya Sai" 
-            className="max-h-[70vh] md:max-h-[85vh] w-auto object-contain pointer-events-none"
+            className="h-[50vh] sm:h-[60vh] md:h-[85vh] w-auto object-contain pointer-events-none"
           />
         </motion.div>
       </motion.div>
 
       {/* Scroll indicator (Optional enhancement) */}
-      <div className="absolute right-8 md:right-12 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 hidden md:flex">
+      <div className="absolute right-8 md:right-12 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 hidden lg:flex">
         <span className="[writing-mode:vertical-rl] rotate-180 text-white text-xs tracking-[0.2em] font-medium uppercase opacity-60">
           Scroll Down
         </span>

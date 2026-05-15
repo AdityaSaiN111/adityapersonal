@@ -91,11 +91,11 @@ const About = () => {
               </div>
 
               <div className="flex flex-col lg:flex-row gap-16 items-start">
-                <div className="relative w-full lg:w-[45%] aspect-[1/1.2] shrink-0">
-                  <div className="absolute top-0 left-0 w-[80%] h-[70%] rounded-2xl overflow-hidden shadow-2xl z-0">
+                <div className="relative w-full lg:w-[45%] aspect-[1/1.2] shrink-0 mb-12 lg:mb-0">
+                  <div className="absolute top-0 left-0 w-[80%] h-[70%] lg:w-[80%] lg:h-[70%] rounded-2xl overflow-hidden shadow-2xl z-0">
                     <img src={img0527} alt="Casual" className="w-full h-full object-cover" />
                   </div>
-                  <div className="absolute bottom-0 right-0 w-[75%] h-[60%] rounded-2xl overflow-hidden shadow-2xl z-10 border-8 border-white">
+                  <div className="absolute bottom-0 right-0 w-[75%] h-[60%] lg:w-[75%] lg:h-[60%] rounded-2xl overflow-hidden shadow-2xl z-10 border-4 md:border-8 border-white">
                     <img src={img2096} alt="Portrait" className="w-full h-full object-cover" />
                   </div>
                 </div>
